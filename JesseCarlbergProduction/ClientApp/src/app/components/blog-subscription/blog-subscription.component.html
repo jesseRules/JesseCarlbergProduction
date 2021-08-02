@@ -1,0 +1,36 @@
+<div class="subscriptionPage">
+  <div class="subscriptionView">
+    <mat-card class="subscription-card">
+      <mat-card-header>
+        <mat-card-title>{{message}}</mat-card-title>
+        <mat-card-subtitle>{{subMessage}}</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form class="subscription-container" [formGroup]="subscriptionForm">
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput name="email" formControlName="email" required />
+            <mat-error *ngIf="subscriptionForm.controls.email.invalid">{{
+              getErrorMessage()
+            }}</mat-error>
+          </mat-form-field>
+          <br />
+        </form>
+      </mat-card-content>
+      <mat-card-actions class="rightBtn">
+        <mat-progress-bar
+          *ngIf="sendingInfo"
+          mode="indeterminate"
+        ></mat-progress-bar>
+        <button
+          type="submit"
+          [disabled]="!subscriptionForm.valid"
+          mat-button
+          (click)="sendInfo($event)"
+        >
+          {{btnText}}
+        </button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+</div>

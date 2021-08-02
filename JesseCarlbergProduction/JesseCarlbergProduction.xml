@@ -1,0 +1,692 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>JesseCarlbergProduction</name>
+    </assembly>
+    <members>
+        <member name="T:JesseCarlbergProduction.Controllers.AntiForgeryController">
+            <summary>
+            Class AntiForgeryController.
+            Implements the <see cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+        </member>
+        <member name="F:JesseCarlbergProduction.Controllers.AntiForgeryController._antiForgery">
+            <summary>
+            The anti forgery
+            </summary>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AntiForgeryController.#ctor(Microsoft.AspNetCore.Antiforgery.IAntiforgery)">
+            <summary>
+            Initializes a new instance of the <see cref="T:JesseCarlbergProduction.Controllers.AntiForgeryController"/> class.
+            </summary>
+            <param name="antiForgery">The anti forgery.</param>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AntiForgeryController.GenerateAntiForgeryTokens">
+            <summary>
+            Generates Anti-Forgery token to be used in Angular App Logins
+            </summary>
+            <returns>Anti-ForgeryToken</returns>
+            <remarks>Anti_forgery tokens are passed with the form submits, this adds an additional layer of security to prevent phishing attacks.</remarks>
+        </member>
+        <member name="T:JesseCarlbergProduction.Controllers.AuthController">
+            <summary>
+            Class AuthController.
+            Implements the <see cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+            </summary>
+            <seealso cref="T:Microsoft.AspNetCore.Mvc.ControllerBase" />
+            <seealso cref="N:Microsoft.AspNetCore.Identity" />
+        </member>
+        <member name="F:JesseCarlbergProduction.Controllers.AuthController._userManager">
+            <summary>
+            The ASP.Net Core Auth user manager
+            </summary>
+        </member>
+        <member name="F:JesseCarlbergProduction.Controllers.AuthController._roleManager">
+            <summary>
+            The role manager
+            </summary>
+        </member>
+        <member name="F:JesseCarlbergProduction.Controllers.AuthController._signInManager">
+            <summary>
+            The sign in manager
+            </summary>
+        </member>
+        <member name="F:JesseCarlbergProduction.Controllers.AuthController._configuration">
+            <summary>
+            The configuration
+            </summary>
+        </member>
+        <member name="F:JesseCarlbergProduction.Controllers.AuthController._emailSender">
+            <summary>
+            The email sender
+            </summary>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.#ctor(Microsoft.AspNetCore.Identity.UserManager{JesseCarlbergProduction.Models.ApplicationUser},Microsoft.AspNetCore.Identity.RoleManager{Microsoft.AspNetCore.Identity.IdentityRole},Microsoft.AspNetCore.Identity.SignInManager{JesseCarlbergProduction.Models.ApplicationUser},Microsoft.Extensions.Configuration.IConfiguration,JesseCarlbergProduction.Interfaces.IEmailService)">
+            <summary>
+            Initializes a new instance of the <see cref="T:JesseCarlbergProduction.Controllers.AuthController"/> class.
+            </summary>
+            <param name="userManager">The user manager.</param>
+            <param name="roleManager">The role manager.</param>
+            <param name="signInManager">The sign in manager.</param>
+            <param name="configuration">The configuration.</param>
+            <param name="emailSender">The email sender.</param>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.LoginAsync(JesseCarlbergProduction.Models.LoginModel)">
+            <summary>
+            Login Method for API and Jesse Carlberg Production App
+            </summary>
+            <param name="model">The model.</param>
+            <returns>Token, Claims, Expiration</returns>
+            ToDo Convert to Cookie instead of Session Token
+            <remarks>Login requires Anti_forgery Token</remarks>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.LogoutAsync">
+            <summary>
+            Logout User
+            </summary>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.ForgotPasswordAsync(JesseCarlbergProduction.Models.ForgotPassword)">
+            <summary>
+            Forgot User Password. Generates email to user.
+            </summary>
+            <param name="forgotPasswordModel">The forgot password model.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.ResetPasswordAsync(JesseCarlbergProduction.Models.ResetPassword)">
+            <summary>
+            Reset User Password. Generates email to User.
+            </summary>
+            <param name="resetPasswordDto">The reset password dto.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.ResetPasswordFromAppAsync(JesseCarlbergProduction.Models.ResetPasswordApp)">
+            <summary>
+            User resets own password in App
+            </summary>
+            <param name="resetPasswordDto">The reset password dto.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.EmailConfirmationAsync(System.String,System.String)">
+            <summary>
+            Webhook to confirm e-mail address
+            </summary>
+            <param name="email">The email.</param>
+            <param name="token">The token.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.EmailValidationAsync(JesseCarlbergProduction.Models.EmailValidation)">
+            <summary>
+            LConfirm e-mail address
+            </summary>
+            <param name="model">The model.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.ResendEmailConfirmationAsync(JesseCarlbergProduction.Models.ResendEmailModel)">
+            <summary>
+            Resend user e-mail confirmation to user e-mail
+            </summary>
+            <param name="model">The model.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.RegisterAsync(JesseCarlbergProduction.Models.RegisterModel)">
+            <summary>
+            Create a new user in the app.
+            </summary>
+            <param name="model">The model.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.RegisterAdminAsync(JesseCarlbergProduction.Models.RegisterModel)">
+            <summary>
+            Register a new admin user
+            </summary>
+            <param name="model">The model.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.CreateNewRole(JesseCarlbergProduction.Models.Auth.RoleModel)">
+            <summary>
+            Create a new Role
+            </summary>
+            <param name="model">The Role Model. Ha.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.GetRoles">
+            <summary>
+            Get List of Roles
+            </summary>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.AddNewRoleToSUserAsync(JesseCarlbergProduction.Models.Auth.AddUserRoleModel)">
+            <summary>
+            Add a Role to a User
+            </summary>
+            <param name="model">User and Role.</param>
+            <returns>IActionResult.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.AuthController.GetEmail(System.String)">
+            <summary>
+            Returns SQL from file.
+            </summary>
+            <param name="filename">The filename.</param>
+            <returns>System.String.</returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.BlogController.Get">
+            <summary>
+            Gets entire list of Blog Entries
+            </summary>
+            <remarks>Uses a MongoDB hosted on Azure</remarks>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.BlogController.GetBlogList(System.Int32,System.Int32)">
+            <summary>
+            Gets a Blog Lists
+            </summary>
+            <param name="count"></param>
+            <param name="offset"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.BlogController.Get(System.String)">
+            <summary>
+            Gets a Blog Entry by ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.BlogController.Create(JesseCarlbergProduction.Models.BlogModel)">
+            <summary>
+            Add a Blog Entry (set id to null)
+            </summary>
+            <remarks>Uses a MongoDB hosted on Azure</remarks>
+            <param name="blog"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.BlogController.Update(System.String,JesseCarlbergProduction.Models.BlogModel)">
+            <summary>
+            Update Blog Entry by ID
+            </summary>
+            <remarks>Uses a MongoDB hosted on Azure</remarks>
+            <param name="id"></param>
+            <param name="blogIn"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.BlogController.Delete(System.String)">
+            <summary>
+            Delete a Blog Entry by ID
+            </summary>
+            <remarks>Uses a MongoDB hosted on Azure</remarks>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.ChartsController.getCodingSkills">
+            <summary>
+            Returns a list of coding skills
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.ChartsController.getSoftSkills">
+            <summary>
+            Returns list of soft skills
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.ContactController.Get(System.String)">
+            <summary>
+            Gets a Contact Entry by ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.ContactController.Create(JesseCarlbergProduction.Models.ContactModel)">
+            <summary>
+            Add a Conact Entry (set id to null)
+            </summary>
+            <remarks>Uses a MongoDB hosted on Azure</remarks>
+            <param name="contact"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.JHExampleController.GetByCounty(System.String,System.Int32,System.Int32)">
+            <summary>
+            Returns data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.JHExampleController.GetByCountyMinimal(System.String,System.Int32,System.Int32)">
+            <summary>
+            Returns data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.JHExampleController.GetByCountyChart(System.String,System.Int32)">
+            <summary>
+            Returns data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.JHExampleController.GetByCountyChartJs(System.String,System.Int32)">
+            <summary>
+            Returns data
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.JHExampleController.GetByStateChartJs(System.String,System.Int32)">
+            <summary>
+            Returns data by State
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.JHExampleController.GetStatesRef">
+            <summary>
+            Returns list of states
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.SubscriptionController.Get(System.String)">
+            <summary>
+            Gets a Subscription Entry by ID
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.SubscriptionController.Create(JesseCarlbergProduction.Models.SubscriptionModel)">
+            <summary>
+            Add a Subscription Entry (set id to null)
+            </summary>
+            <remarks>Uses a MongoDB hosted on Azure</remarks>
+            <param name="subscription"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.Twitter2Controller.GetSearchRecentAsync(System.String,System.Int32)">
+            <summary>
+            Search Twitter by Keyword
+            </summary>
+            <param name="keyword"></param>
+            <param name="tweetCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.Twitter2Controller.GetSearchRecentForDisplayAsync(System.String,System.Int32)">
+            <summary>
+            Search Twitter by Keyword For Display
+            </summary>
+            <param name="keyword"></param>
+            <param name="tweetCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.TwitterController.getTweetsByUserAsync(System.String,System.Int32)">
+             <summary>
+             Get Tweets bt UserName limit 100
+             </summary>
+             <param name="userName"></param>
+             <param name="tweetCount"></param>
+             <returns></returns>
+            
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.TwitterController.getTweetsByGeoLocationAsync(System.String,System.String,System.Int32,System.Int32)">
+            <summary>
+            Get Tweets by Geo Location
+            </summary>
+            <param name="lat"></param>
+            <param name="lng"></param>
+            <param name="radiusMiles"></param>
+            <param name="tweetCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.TwitterController.getTweetsByKeywordAsync(System.String,System.Int32)">
+            <summary>
+            Search Twitter by Keyword
+            </summary>
+            <param name="keyword"></param>
+            <param name="tweetCount"></param>
+            <returns></returns>
+        </member>
+        <member name="M:JesseCarlbergProduction.Controllers.TwitterController.getTweetsByKeywordAfterIdAsync(System.String,System.Int32,System.String)">
+            <summary>
+            Search Twitter by Keyword
+            </summary>
+            <param name="keyword"></param>
+            <param name="tweetCount"></param>
+            <param name="afterId"></param>
+            <returns></returns>
+        </member>
+        <member name="T:JesseCarlbergProduction.Interfaces.IEmailService">
+            <summary>
+            Interface IEmailService
+            </summary>
+        </member>
+        <member name="M:JesseCarlbergProduction.Interfaces.IEmailService.SendEmailAsync(JesseCarlbergProduction.Models.EmailModel)">
+            <summary>
+            Sends the email.
+            </summary>
+            <param name="email">The email.</param>
+            <returns>Task&lt;SendGrid.Response&gt;.</returns>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.ApplicationDBContext">
+            <summary>
+            Class ApplicationDBContext.
+            Implements the <see cref="!:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext&lt;iExcelContainer.Models.ApplicationUser&gt;" />
+            </summary>
+            <seealso cref="!:Microsoft.AspNetCore.Identity.EntityFrameworkCore.IdentityDbContext&lt;iExcelContainer.Models.ApplicationUser&gt;" />
+        </member>
+        <member name="M:JesseCarlbergProduction.Models.ApplicationDBContext.#ctor(Microsoft.EntityFrameworkCore.DbContextOptions{JesseCarlbergProduction.Models.ApplicationDBContext})">
+            <summary>
+            Initializes a new instance of the <see cref="T:JesseCarlbergProduction.Models.ApplicationDBContext"/> class.
+            </summary>
+            <param name="options">The options.</param>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.AuthMessageSenderOptions">
+            <summary>
+            Class AuthMessageSenderOptions.
+            </summary>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.AuthMessageSenderOptions.SendGridUser">
+            <summary>
+            Gets or sets the send grid user.
+            </summary>
+            <value>The send grid user.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.AuthMessageSenderOptions.SendGridKey">
+            <summary>
+            Gets or sets the send grid key.
+            </summary>
+            <value>The send grid key.</value>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.AuthResponse">
+            <summary>
+            Class AuthResponse.
+            </summary>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.AuthResponse.IsAuthSuccessful">
+            <summary>
+            Gets or sets a value indicating whether this instance is authentication successful.
+            </summary>
+            <value><c>true</c> if this instance is authentication successful; otherwise, <c>false</c>.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.AuthResponse.ErrorMessage">
+            <summary>
+            Gets or sets the error message.
+            </summary>
+            <value>The error message.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.AuthResponse.Token">
+            <summary>
+            Gets or sets the token.
+            </summary>
+            <value>The token.</value>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.EmailValidation">
+            <summary>
+            Class EmailValidation.
+            </summary>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.EmailValidation.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+            <value>The email.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.EmailValidation.Token">
+            <summary>
+            Gets or sets the token.
+            </summary>
+            <value>The token.</value>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.ForgotPassword">
+            <summary>
+            Class ForgotPassword.
+            </summary>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.ForgotPassword.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+            <value>The email.</value>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.LoginModel">
+            <summary>
+            Class LoginModel.
+            </summary>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.LoginModel.Username">
+            <summary>
+            Gets or sets the username.
+            </summary>
+            <value>The username.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.LoginModel.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.RegisterModel">
+            <summary>
+            Class RegisterModel.
+            </summary>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.RegisterModel.Username">
+            <summary>
+            Gets or sets the username.
+            </summary>
+            <value>The username.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.RegisterModel.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+            <value>The email.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.RegisterModel.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.ResendEmailModel">
+            <summary>
+            Class ResendEmailModel.
+            </summary>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.ResendEmailModel.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+            <value>The email.</value>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.ResetPassword">
+            <summary>
+            Class ResetPassword.
+            </summary>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.ResetPassword.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.ResetPassword.ConfirmPassword">
+            <summary>
+            Gets or sets the confirm password.
+            </summary>
+            <value>The confirm password.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.ResetPassword.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+            <value>The email.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.ResetPassword.Token">
+            <summary>
+            Gets or sets the token.
+            </summary>
+            <value>The token.</value>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.ResetPasswordApp">
+            <summary>
+            Class ResetPasswordApp.
+            </summary>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.ResetPasswordApp.Password">
+            <summary>
+            Gets or sets the password.
+            </summary>
+            <value>The password.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.ResetPasswordApp.ConfirmPassword">
+            <summary>
+            Gets or sets the confirm password.
+            </summary>
+            <value>The confirm password.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.ResetPasswordApp.Email">
+            <summary>
+            Gets or sets the email.
+            </summary>
+            <value>The email.</value>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.UserRoles">
+            <summary>
+            Class UserRoles.
+            </summary>
+        </member>
+        <member name="F:JesseCarlbergProduction.Models.UserRoles.Admin">
+            <summary>
+            The admin
+            </summary>
+        </member>
+        <member name="F:JesseCarlbergProduction.Models.UserRoles.Photo">
+            <summary>
+            The Photo Client
+            </summary>
+        </member>
+        <member name="F:JesseCarlbergProduction.Models.UserRoles.Web">
+            <summary>
+            The Photo Client
+            </summary>
+        </member>
+        <member name="F:JesseCarlbergProduction.Models.UserRoles.User">
+            <summary>
+            The user
+            </summary>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.EmailModel">
+            <summary>
+            Class EmailModel.
+            </summary>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.EmailModel.ToEmail">
+            <summary>
+            Converts to email.
+            </summary>
+            <value>To email.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.EmailModel.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+            <value>The message.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.EmailModel.HtmlMessage">
+            <summary>
+            Gets or sets the HTML message.
+            </summary>
+            <value>The HTML message.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.EmailModel.FName">
+            <summary>
+            Gets or sets the name of the f.
+            </summary>
+            <value>The name of the f.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.EmailModel.LName">
+            <summary>
+            Gets or sets the name of the l.
+            </summary>
+            <value>The name of the l.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.EmailModel.Subject">
+            <summary>
+            Gets or sets the subject.
+            </summary>
+            <value>The subject.</value>
+        </member>
+        <member name="T:JesseCarlbergProduction.Models.Response">
+            <summary>
+            Class Response.
+            </summary>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.Response.Status">
+            <summary>
+            Gets or sets the status.
+            </summary>
+            <value>The status.</value>
+        </member>
+        <member name="P:JesseCarlbergProduction.Models.Response.Message">
+            <summary>
+            Gets or sets the message.
+            </summary>
+            <value>The message.</value>
+        </member>
+        <member name="T:JesseCarlbergProduction.Services.EmailService">
+            <summary>
+            Class EmailService.
+            </summary>
+        </member>
+        <member name="M:JesseCarlbergProduction.Services.EmailService.#ctor(Microsoft.Extensions.Options.IOptions{JesseCarlbergProduction.Models.AuthMessageSenderOptions})">
+            <summary>
+            Initializes a new instance of the <see cref="T:JesseCarlbergProduction.Services.EmailService"/> class.
+            </summary>
+            <param name="optionsAccessor">The options accessor.</param>
+        </member>
+        <member name="P:JesseCarlbergProduction.Services.EmailService.Options">
+            <summary>
+            Gets the options.
+            </summary>
+            <value>The options.</value>
+        </member>
+        <member name="M:JesseCarlbergProduction.Services.EmailService.SendEmailAsync(JesseCarlbergProduction.Models.EmailModel)">
+            <summary>
+            Sends the email.
+            </summary>
+            <param name="email">The email.</param>
+            <returns>Task&lt;SendGrid.Response&gt;.</returns>
+        </member>
+        <member name="T:JesseCarlbergProduction.Services.TwitterService">
+            <summary>
+            TwitterService
+            </summary>
+            <remarks></remarks>
+        </member>
+        <member name="T:JesseCarlbergProduction.Startup">
+            <summary>
+            Class Startup.
+            </summary>
+        </member>
+        <member name="M:JesseCarlbergProduction.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Initializes a new instance of the <see cref="T:JesseCarlbergProduction.Startup"/> class.
+            </summary>
+            <param name="configuration">The configuration.</param>
+        </member>
+        <member name="P:JesseCarlbergProduction.Startup.Configuration">
+            <summary>
+            Gets the configuration.
+            </summary>
+            <value>The configuration.</value>
+        </member>
+        <member name="M:JesseCarlbergProduction.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Configures the services.
+            </summary>
+            <param name="services">The services.</param>
+        </member>
+        <member name="M:JesseCarlbergProduction.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment,Microsoft.AspNetCore.Antiforgery.IAntiforgery)">
+            <summary>
+            Configures the specified application.
+            </summary>
+            <param name="app">The application.</param>
+            <param name="env">The env.</param>
+            <param name="antiforgery">The antiforgery.</param>
+        </member>
+    </members>
+</doc>

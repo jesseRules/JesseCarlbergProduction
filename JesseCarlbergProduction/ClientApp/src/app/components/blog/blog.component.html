@@ -1,0 +1,66 @@
+<div class="mainBlogPage editorial">
+  <div class="headerCard">
+    <div class="fixedHeader">
+      <div class="intro-text">
+        <div class="intro-lead-in">The Fevered Dreams of a Mad Man</div>
+        <div class="intro-heading">Big J's Big Dev Blog.</div>
+        <button
+          mat-raised-button
+          color="accent"
+          routerLink="/blog-subscription/subscribe"
+        >
+          Get Email Updates
+        </button>
+      </div>
+    </div>
+    <img
+      mat-card-image
+      class="heroImg"
+      src="../../../assets/photos/JES03565-2.jpg"
+      alt="Sunset"
+    />
+  </div>
+
+  <div *ngIf="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+
+  <section id="mainblog" class="blogContainer mpadding">
+    <div class="m-hero-item">
+      <h2 class="c-heading-2">Recent Posts</h2>
+      <h3 class="section-subheading text-muted">Check out what's new</h3>
+    </div>
+    <mat-grid-list
+      #grid
+      [cols]="cols"
+      [rowHeight]="rowheight"
+      gutterSize="20px"
+    >
+      <mat-grid-tile *ngFor="let item of feed; let i = index">
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>{{ item.title }}</mat-card-title>
+            <mat-card-subtitle>{{ item.pubDate | date }}</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            [src]="item.thumbImageURL"
+            alt="Rock Lobster"
+            (error)="setDefaultPic(item)"
+            routerLink="/blog-post/{{ item.Id }}"
+          />
+          <mat-card-content>
+            <p>
+              {{ item.description }}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button routerLink="/blog-post/{{ item.Id }}">
+              Read more
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+</div>

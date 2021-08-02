@@ -1,0 +1,23 @@
+
+<!-- saved from url=(0072)https://www.tdameritrade.com/privacy_iframe.html?e=prod&get_c=CONSENTMGR -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<script type="text/javascript" async="" charset="utf-8" id="tiqapp" src="./utag.v.js(1).download"></script></head>
+<body>
+<script src="./utag.js(1).download" type="text/javascript" async=""></script><script type="text/javascript">
+    /* Determine environment to use */
+    var params = location.search ? location.search.substr(1).split('&') : [],
+        env = "dev";
+    for ( var i= 0; i < params.length; i++){
+        if (params[i].toLowerCase().indexOf("e=") == 0){
+            env = params[i].split("=")[1];
+        }
+    }
+    /* Download Tealium utag async */
+    (function(a,b,c,d){
+    a='https://tags.tiqcdn.com/utag/tdameritrade/privacy/' + env + '/utag.js';
+    b=document;c='script';d=b.createElement(c);d.src=a;d.type='text/java'+c;d.async=true;
+    a=b.getElementsByTagName(c)[0];a.parentNode.insertBefore(d,a);
+    })();
+</script>
+
+</body></html>

@@ -1,0 +1,91 @@
+<div class="twitterPage">
+  <div class="twitterView">
+    <mat-card>
+      <form
+        [formGroup]="twitterForm"
+        (ngSubmit)="onSubmit()"
+        class="full-width"
+      >
+        <mat-form-field>
+          <input
+            matInput
+            placeholder="Search"
+            id="search_title"
+            formControlName="search"
+          />
+        </mat-form-field>
+        <button class="button" type="submit" mat-icon-button color="accent">
+          <mat-icon>search</mat-icon>
+        </button>
+      </form>
+      <div *ngIf="loading">
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </mat-card>
+    <div class="searchResults">
+      <mat-grid-list
+        #twitterGrid
+        [cols]="cols"
+        [rowHeight]="rowheight"
+        gutterSize="20px"
+      >
+        <mat-grid-tile *ngFor="let tweet of tweets">
+          <mat-card>
+            <mat-card-header>
+              <img
+                mat-card-avatar
+                [src]="tweet?.user.profile_image_url"
+                class="twitter-header-image"
+                (click)="userClick(tweet.user.screen_name)"
+              />
+              <mat-card-title (click)="userClick(tweet.user.screen_name)" class="twitterCardTitle"
+                >{{ tweet.user.name }}
+                <span class="userScreenName"
+                  >@{{ tweet.user.screen_name }}</span
+                ></mat-card-title
+              >
+              <mat-card-subtitle
+                *ngIf="tweet.in_reply_to_status_id"
+                (click)="userClick(tweet.tweet.in_reply_to_screen_name)"
+                >Replying to @{{
+                  tweet.in_reply_to_screen_name
+                }}</mat-card-subtitle
+              >
+              <mat-card-subtitle>{{
+                tweet.created_at | date: "medium"
+              }}</mat-card-subtitle>
+            </mat-card-header>
+
+            <mat-card-content>
+              <p [innerHTML]="tweet.full_text | hmColor"></p>
+            </mat-card-content>
+            <mat-card-actions>
+              <button mat-icon-button color="primary" disabled>
+                <mat-icon>comment</mat-icon
+                ><span *ngIf="tweet.comment_count">{{
+                  tweet.comment_count
+                }}</span>
+              </button>
+              <button mat-icon-button color="primary" disabled>
+                <mat-icon>sync</mat-icon
+                ><span *ngIf="tweet.retweet_count">{{
+                  tweet.retweet_count
+                }}</span>
+              </button>
+              <button mat-icon-button color="primary" disabled>
+                <mat-icon>star_outline</mat-icon
+                ><span *ngIf="tweet.favorite_count">{{
+                  tweet.favorite_count
+                }}</span>
+              </button>
+            </mat-card-actions>
+
+            <!-- <mat-card-actions  *ngIf="tweet.in_reply_to_status_id">
+              <a>Show this thread</a>
+            </mat-card-actions> -->
+          </mat-card>
+        </mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>

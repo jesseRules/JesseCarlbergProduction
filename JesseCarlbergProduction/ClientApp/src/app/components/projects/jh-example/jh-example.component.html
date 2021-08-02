@@ -1,0 +1,38 @@
+<div class="mainJHChartView">
+  <mat-toolbar class="cvdToolbar">
+    <span>COVID-19 </span>
+    <span class="navb-spacer"></span>
+    <mat-form-field *ngIf="states">
+      <mat-label>State</mat-label>
+      <mat-select (selectionChange)="selchange($event)">
+        <mat-option>None</mat-option>
+        <mat-option *ngFor="let state of states" [value]="state">{{
+          state.name
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <span class="navb-spacer"></span>
+    <mat-form-field *ngIf="fips">
+      <mat-label>County</mat-label>
+      <mat-select (selectionChange)="selCountyChange($event)">
+        <mat-option *ngFor="let fip of fips" [value]="fip">{{
+          fip.county
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </mat-toolbar>
+  <div class="cvdSrc">
+    <h3>Data from Johns Hopkins University CCSE U.S.</h3>
+    <p>
+      Each record measures the counts of confirmed, recovered, and deaths for a
+      U.S. county on a specific date.
+    </p>
+  </div>
+
+  <div *ngIf="loading">
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+  <div class="chart-container">
+    <canvas id="jhcanvas"></canvas>
+  </div>
+</div>

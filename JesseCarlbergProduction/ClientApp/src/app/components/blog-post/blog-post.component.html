@@ -1,0 +1,15 @@
+<div class="blogMainView">
+  <section id="mainblog" class="blogContainer" *ngIf="blogItem">
+    <mat-card class="blogCard">
+      <mat-card-header>
+        <mat-card-title>{{ blogItem.title }}</mat-card-title>
+        <mat-card-subtitle>
+          {{ blogItem.pubDate | date }}
+        </mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content *ngIf="!loading">
+        <div [innerHTML]="content | safeHtml"></div>
+      </mat-card-content>
+    </mat-card>
+  </section>
+</div>

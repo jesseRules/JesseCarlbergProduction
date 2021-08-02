@@ -1,0 +1,41 @@
+.contactView {
+  min-height: 600px;
+  padding: 10%;
+}
+
+.contactPage {
+  background-size: cover;
+  background-position: top;
+  background-image: url('https://jessecarlbergproduction.azureedge.net/images/website/JES08551-2.jpg');
+  background-position-y: top;
+  background-repeat: no-repeat;
+  min-height: calc(100vh - 148px);
+}
+
+.contact-card {
+  width: 90%;
+}
+
+@media only screen and (min-width: 768px) {
+  .contact-card {
+    width: 450px;
+  }
+}
+
+@media only screen and (min-width: 1084px) {
+  .contact-card {
+    width: 450px;
+  }
+}
+
+.contact-container {
+  width: 100%;
+}
+
+mat-form-field.mat-form-field {
+  width: -webkit-fill-available;
+}
+
+.rightBtn {
+  text-align: end;
+}

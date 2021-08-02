@@ -1,0 +1,22 @@
+<div class="workingCard">
+  <mat-card>This project is still under construction. It probably doesn't work right. Be nice.</mat-card>
+</div>
+
+<mat-drawer-container class="main-container">
+  <mat-drawer mode="side" opened class="sideMenu">
+    <div class="editorStack">
+      <div class="editorContainer">
+        <app-htmleditor></app-htmleditor>
+      </div>
+      <div class="editorContainer">
+        <app-styleeditor></app-styleeditor>
+      </div>
+      <div class="editorContainer">
+        <app-tseditor></app-tseditor>
+      </div>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content>
+    <app-resultview></app-resultview>
+  </mat-drawer-content>
+</mat-drawer-container>

@@ -1,0 +1,42 @@
+<footer class="docs-footer">
+  <mat-grid-list
+    #gridFooter
+    [cols]="cols"
+    [rowHeight]="rowheight"
+    gutterSize="20px"
+  >
+    <mat-grid-tile>
+      <mat-toolbar color="primary" routerLink="/contact">
+        <div class="clickButton">
+          <button mat-icon-button aria-label="Contact Me">
+            <mat-icon>contact_support</mat-icon>
+          </button>
+          <span>Contact Me</span>
+        </div>
+      </mat-toolbar>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-toolbar color="primary" routerLink="/photography">
+        <div class="clickButton">
+          <button mat-icon-button aria-label="Contact Me">
+            <mat-icon>camera_alt</mat-icon>
+          </button>
+          <span>Photography</span>
+        </div>
+      </mat-toolbar>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <div class="docs-footer-copyright">
+        <div>
+          <span>Powered by Jesse's free time ©2021.</span
+          ><a routerLink="/license">
+            Code licensed under an MIT-style License.</a
+          >
+        </div>
+        <div>
+          <span> <a routerLink="/license">Some more disclaimers.</a></span>
+        </div>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</footer>

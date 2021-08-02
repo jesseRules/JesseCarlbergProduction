@@ -1,0 +1,196 @@
+<div class="blogMainView">
+  <div class="blogEditorBody">
+    <div class="blogForm">
+      <mat-accordion class="blog-headers-align" multi>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header>
+            <mat-panel-title> {{ blogForm.value.title }} </mat-panel-title>
+            <mat-panel-description>
+              {{ blogForm.value.description }}
+            </mat-panel-description>
+          </mat-expansion-panel-header>
+
+          <form [formGroup]="blogForm">
+            <mat-form-field class="full-width">
+              <input
+                matInput
+                placeholder="Title"
+                id="blog_title"
+                formControlName="title"
+              />
+            </mat-form-field>
+            <mat-form-field class="blog-chip-list full-width">
+              <mat-label>Tags</mat-label>
+              <mat-chip-list #chipList aria-label="Tag selection">
+                <mat-chip
+                  *ngFor="let tag of tags"
+                  [selectable]="selectable"
+                  [removable]="removable"
+                  (removed)="remove(tag)"
+                >
+                  {{ tag.name }}
+                  <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                </mat-chip>
+                <input
+                  placeholder="New Tag..."
+                  formControlName="tags"
+                  [matChipInputFor]="chipList"
+                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                  [matChipInputAddOnBlur]="addOnBlur"
+                  (matChipInputTokenEnd)="add($event)"
+                />
+              </mat-chip-list>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label> Description</mat-label>
+              <textarea matInput formControlName="description"></textarea>
+            </mat-form-field>
+            <mat-action-row>
+              <button
+                mat-button
+                type="submit"
+                color="primary"
+                (click)="saveForm()"
+              >
+                Save
+              </button>
+            </mat-action-row>
+          </form>
+        </mat-expansion-panel>
+      </mat-accordion>
+    </div>
+    <div *ngIf="loading">
+      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+    </div>
+    <mat-toolbar>
+      <!-- <button mat-button disabled [matMenuTriggerFor]="menu">
+          {{ editorType }}
+        </button>
+        <mat-menu #menu="matMenu">
+          <button
+            mat-menu-item
+            *ngFor="let item of editorSelectionList; let i = index"
+            (click)="editorSelection(item)"
+          >
+            {{ item.name }}
+          </button>
+        </mat-menu> -->
+      <button
+        mat-icon-button
+        class="format-icon"
+        aria-label="Format Text Bold"
+        title="Format Text Bold"
+        (click)="formatBold()"
+      >
+        <mat-icon>format_bold</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="format-icon"
+        aria-label="Format Text Bold"
+        title="Format Text Italics"
+        (click)="formatItalics()"
+      >
+        <mat-icon>format_italic</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="format-icon"
+        aria-label="Add Title"
+        title="Update Title"
+        (click)="formatTitle()"
+      >
+        <mat-icon>title</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="format-icon"
+        aria-label="Format Text Strikethrough"
+        title="Format Text Strikethrough"
+        (click)="formatStrikethrough()"
+      >
+        <mat-icon> format_strikethrough</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="format-icon"
+        aria-label="Add Bulleted List"
+        title="Add Bulleted List"
+        (click)="addBulletedList()"
+      >
+        <mat-icon> format_list_bulleted</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="format-icon"
+        aria-label="Add Numbered List"
+      >
+        <mat-icon> format_list_numbered_rt</mat-icon>
+      </button>
+      <button
+        mat-icon-button
+        class="format-icon"
+        aria-label="Format Quote Block"
+      >
+        <mat-icon>format_quote</mat-icon>
+      </button>
+      <button mat-icon-button class="format-icon" aria-label="Format Code">
+        <mat-icon>code</mat-icon>
+      </button>
+      <button mat-icon-button class="format-icon" aria-label="Add Link">
+        <mat-icon>add_link</mat-icon>
+      </button>
+      <button mat-icon-button class="format-icon" aria-label="Add Photo">
+        <mat-icon>add_photo_alternate</mat-icon>
+      </button>
+      <button mat-icon-button class="format-icon" aria-label="Add Photo">
+        <mat-icon>info</mat-icon>
+      </button>
+
+      <span class="blog-nav-spacer"></span>
+      <button mat-icon-button class="format-icon" aria-label="Add Photo">
+        <mat-icon>info</mat-icon>
+      </button>
+    </mat-toolbar>
+
+    <mat-grid-list
+      #editorGrid
+      [cols]="cols"
+      [rowHeight]="rowheight"
+      gutterSize="20px"
+    >
+      <mat-grid-tile class="blogtile">
+        <div *ngIf="editorType == 'Text'">
+          <!-- <ckeditor [editor]="ckeEditor" data="<p>Hello, world!</p>"></ckeditor> -->
+        </div>
+
+        <ngx-monaco-editor
+          #blogeditor
+          class="my-code-editor"
+          [options]="editorOptions"
+          [(ngModel)]="code"
+          (init)="editorInit($event)"
+          (ngModelChange)="onChange($event)"
+        ></ngx-monaco-editor>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-tab-group mat-align-tabs="end" class="marginBox full-height">
+          <mat-tab label="View">
+            <mat-card> <div [innerHTML]="content | safeHtml"></div> </mat-card
+          ></mat-tab>
+          <mat-tab label="HTML">
+            <code>
+              <pre>{{ content }}</pre>
+            </code>
+
+            Content as Markdown:
+            <div>{{ markdownCode }}</div>
+
+            Content as a string:
+            <code>{{ contentAsString }}</code>
+          </mat-tab>
+        </mat-tab-group>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </div>
+</div>

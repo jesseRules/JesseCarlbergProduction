@@ -1,0 +1,259 @@
+<div class="mainPage">
+  <div class="headerCard">
+    <div class="fixedHeader">
+      <div class="intro-text">
+        <div class="intro-lead-in">Full-Stack Development</div>
+        <div class="intro-heading">From websites to applications.</div>
+        <button mat-raised-button color="accent" routerLink="/portfolio">
+          Show me
+        </button>
+      </div>
+    </div>
+    <img
+      mat-card-image
+      class="heroImg"
+      src="../../../assets/photos/JES00284-updated.jpg"
+      alt="Purple Haze"
+    />
+  </div>
+
+  <!-- Services Section -->
+  <section id="services" class="mpadding">
+    <div class="m-hero-item">
+      <h2 class="c-heading-2">Services</h2>
+      <h3 class="section-subheading text-muted">
+        Making things better by playing to my strengths.
+      </h3>
+    </div>
+    <mat-grid-list
+      #grid
+      [cols]="cols"
+      [rowHeight]="rowheight"
+      title ="Services"
+      class="homeServices"
+      gutterSize="20px"
+    >
+      <mat-grid-tile class="homeTile">
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Coding</mat-card-title>
+            <mat-card-subtitle
+              >UI/UX, Front-End, C#, Java, etc.</mat-card-subtitle
+            >
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/photos/JES06897.jpg"
+            alt="Rock Lobster"
+            routerLink="/coding"
+          />
+          <mat-card-content>
+            <p>
+              As a senior developer a big part of my job was training new
+              developers, analysts, and dev-splaining things to business. Here
+              is a few of my blog posts and projects related to this. I also
+              strongly believe in "copy-pasting" coding, so you're gonna find a
+              lot of my personal favorite snippets and stuff.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button routerLink="/coding">Let's go</button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile class="homeTile">
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Photography</mat-card-title>
+            <mat-card-subtitle
+              >Brand, products, puppies, etc.</mat-card-subtitle
+            >
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/photos/JES07231.jpg"
+            alt="Flower"
+            routerLink="/photography"
+          />
+          <mat-card-content>
+            <p>
+              I needed a hobby during the pandemic, so this what I took up. As
+              an avid phone-tographer for years before this was a lot of to get
+              into. This also extends my capability for building custom
+              websites, as I can shoot: headshots, office pictures, etc. I am
+              pretty new to the world of photography, but I make up for this by
+              taking just a crazy ton of pictures; one of them always turns out
+              great.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button routerLink="/photography">
+              ABC: Always be clicking
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile class="homeTile">
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Consulting</mat-card-title>
+            <mat-card-subtitle>
+              Why make me do it, when I can show you how?
+            </mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/photos/JLC00452.jpg"
+            alt="Jack"
+            routerLink="/consulting"
+          />
+          <mat-card-content>
+            <p>
+              OMG, don't make me do this. I'm kidding... mostly, I have been
+              asked for this service a lot in the past. However, consulting is
+              the hardest thing a developer can do IMO. Every developer wants to
+              just trash it all and start over. Keeping the existing
+              infrastructure, quirks and all, while fixing production issues is
+              an acquired skill. A skill that I am willing to profit off of.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button routerLink="/consulting">
+              Follow the rubber duck
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+
+  <section>
+    <div class="raisonCard">
+      <mat-card class="info-card">
+        <mat-card-header>
+          <mat-card-title>Raison D'être</mat-card-title>
+          <mat-card-subtitle>
+            Why make me do it, when I can show you how?
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            I've been wanting to build a site like this for a while. A place I
+            could just put all my hobbies, all my experience, and all my passion
+            into. Being a software developer just means you have more tools to
+            solve problems and I find problems every day in my life I want to
+            fix. So, this will be that place, my memory palace, my junk drawer
+            and that's its reason for being.
+          </p>
+        </mat-card-content>
+        <mat-card-actions>
+          <button mat-button routerLink="/about">About me</button>
+        </mat-card-actions>
+      </mat-card>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="aboutReview" class="mpadding">
+    <div class="m-hero-item">
+      <h2 class="c-heading-2">Coding Passion Projects</h2>
+      <h3 class="section-subheading text-muted">Chasing the shiney ball.</h3>
+    </div>
+    <mat-grid-list
+      #gridAbout
+      [cols]="cols"
+      [rowHeight]="rowheight"
+      gutterSize="20px"
+    >
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Projects</mat-card-title>
+            <mat-card-subtitle
+              >Work projects, fun projects, not so fun
+              projects.</mat-card-subtitle
+            >
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/photos/JES08844.jpg"
+            alt="Rock Lobster"
+            routerLink="/portfolio"
+          />
+          <mat-card-content>
+            <p>
+              Come marvel at all of past Jesse's work. You can cringe with me at
+              my first coding attempts and maybe gain a thing or two from the
+              solutions I came up with. I mixed in some of the awards and
+              competitions I have been a part of and added a few fun builds to
+              keep things light.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button routerLink="/portfolio">
+              Steal my stuff, it's cool
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Blog</mat-card-title>
+            <mat-card-subtitle
+              >My manifesto, just sans cabin-in-the-woods.</mat-card-subtitle
+            >
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/photos/JES00799.jpg"
+            alt="Kiwano melon"
+            routerLink="/blog"
+          />
+          <mat-card-content>
+            <p>
+              Ugh, everyone has a blog on the internet. And when you hit 30 you
+              start a blog or join an MLM to sell crap to your Facebook friends.
+              Since none of my friends need glue on fingernail stickers, I'm
+              going this route. There's a mix of coding, personal, and
+              professional stuff in here and you can sort for what you want to
+              read. If you don't find anything you like, try Alt+F4.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button routerLink="/blog">
+              Poems about correct tabbing
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+
+  <section>
+    <div class="finCard">
+      <mat-card class="fin-card">
+        <mat-card-header>
+          <mat-card-title>El Fin del Mundo</mat-card-title>
+          <mat-card-subtitle> Making lasting products </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>
+            This card is gonna be here for a while. I'm mostly putting this card
+            here to remind me to keep at it. That even when this project is
+            complete, I still need to use this website/application. That's how I
+            learned to code, I was a user and had a problem I needed fixed. So,
+            I learned how to code. I learned how to manage servers, get the data
+            I needed, and do the things I wanted to do. And even after I
+            automated most of my job, built a fancy interface, I found more that
+            I could do to make my app better. This is what I am striving for
+            here, something I want to use, something that just works.
+          </p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </section>
+</div>

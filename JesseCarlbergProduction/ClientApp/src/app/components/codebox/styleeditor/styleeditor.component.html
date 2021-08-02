@@ -1,0 +1,25 @@
+<mat-toolbar>
+  <button mat-button [matMenuTriggerFor]="menu">
+    {{ editorTypeSelection }}
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>CSS</button>
+  </mat-menu>
+  <span class="nav-spacer"></span>
+  <button mat-icon-button [matMenuTriggerFor]="settingsMenu" aria-label="Settings menu">
+    <mat-icon>settings</mat-icon>
+  </button>
+  <mat-menu #settingsMenu="matMenu">
+    <button mat-menu-item>
+      <mat-icon>text_format</mat-icon>
+      <span>Format CSS</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+<ngx-monaco-editor
+  [options]="editorOptions"
+  [(ngModel)]="code"
+  (init)="editorInit($event)"
+  (onInit)="monacoOnInit($event)"
+  (ngModelChange)="onChange($event)"
+></ngx-monaco-editor>

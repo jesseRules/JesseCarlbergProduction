@@ -1,0 +1,32 @@
+canvas {
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 80vh;
+  width: 90vw;
+}
+
+.mainJHChartView {
+ overflow: hidden;
+  width: 100%;
+  min-height: calc(100vh - 148px);
+}
+
+
+.navb-spacer {
+  padding-right: 10px;
+}
+
+.cvdToolbar {
+  height: 90px !important;
+}
+
+.cvdSrc {
+  width: 90vw;
+  margin: auto;
+}

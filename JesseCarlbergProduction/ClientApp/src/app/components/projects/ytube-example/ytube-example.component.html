@@ -1,0 +1,45 @@
+<div class="mainYoutubeView">
+  <mat-card class="main-card">
+    <mat-card-header>
+      <mat-card-title>Angular YouTube example</mat-card-title>
+      <mat-card-subtitle>Built in Youtube</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <p>
+        Since the official relase of the
+        <a
+          href="https://github.com/angular/components/blob/master/src/youtube-player/README.md"
+          target="_blank"
+          >Angular YouTube Player Component</a
+        >
+        came out, embedding videos has gotten exponentially easier to do.
+      </p>
+      <p>
+        <youtube-player
+          videoId="8JeiZSQKQiM"
+          suggestedQuality="highres"
+          [height]="ytHeight"
+          [width]="ytWidth"
+          [startSeconds]="'430'"
+          [endSeconds]="60"
+        ></youtube-player>
+      </p>
+      <p>
+        Before we dive into this example, please make sure your Angular
+        application must be greater than version 8.2.x.
+      </p>
+      <p>
+        <b>Installing YouTube Player</b><br />
+        npm install @angular/youtube-player
+        <button title="Copy Text" mat-icon-button (click)="copyText($event)">
+          <mat-icon aria-hidden="false" aria-label="Copy Content"
+            >content_copy</mat-icon
+          >
+        </button>
+      </p>
+
+      <!-- Add youtube sample code here -->
+    </mat-card-content>
+    <mat-card-actions> </mat-card-actions>
+  </mat-card>
+</div>

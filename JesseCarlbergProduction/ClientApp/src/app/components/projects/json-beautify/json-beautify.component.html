@@ -1,0 +1,29 @@
+<div class="jsonBeautview">
+  <mat-toolbar>
+    <mat-toolbar-row>
+      <span>JSON Beautifier</span>
+      <span class="nav-spacer"></span>
+      <button mat-button (click)="validate($event)">Validate</button>
+      <button title="Copy Text" mat-icon-button (click)="copyText($event)">
+        <mat-icon aria-hidden="false" aria-label="Copy Content"
+          >content_copy</mat-icon
+        >
+      </button>
+      <button title="Clear Text" mat-icon-button (click)="clearCode()">
+        <mat-icon aria-hidden="false" aria-label="Clear Content"
+          >delete</mat-icon
+        >
+      </button>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <div class="jsonEditor">
+    <ngx-monaco-editor
+    #monacoComponent
+      [options]="editorOptions"
+      [(ngModel)]="code"
+      (init)="editorInit($event)"
+      (onInit)="monacoOnInit($event)"
+      (ngModelChange)="onChange($event)"
+    ></ngx-monaco-editor>
+  </div>
+</div>

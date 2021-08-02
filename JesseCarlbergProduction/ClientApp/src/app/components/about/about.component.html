@@ -1,0 +1,160 @@
+<div class="aboutView">
+  <section class="mainPanel">
+    <mat-grid-list
+      #grid
+      [cols]="cols"
+      [rowHeight]="rowheight"
+      gutterSize="20px"
+    >
+      <mat-grid-tile>
+        <div
+          id="text-main"
+          class="text-main"
+          style="visibility: visible; right: 0%; opacity: 1"
+        >
+          <h2 class="c-heading-2">About Me</h2>
+          <p>
+            <a href="https://github.com/jesseRules" target="_blank">
+              <img src="../../../assets/icons/github.png" />
+            </a>
+            <a href="https://www.linkedin.com/in/jcarlberg/" target="_blank">
+              <img src="../../../assets/icons/linkedin.png" />
+            </a>
+          </p>
+          <p class="intro">
+            I'm a full stack software dev based in the silicon prairie.
+          </p>
+          <p>
+            I enjoy turning complex problems into simple, beautiful and
+            intuitive solutions. When I'm not coding, terrorizing my children,
+            or taking pics, you'll find me cooking, gardening or walking the
+            dog.
+          </p>
+          <p>
+            <button mat-raised-button color="accent" routerLink="/resume">
+              Résumé
+            </button>
+            <button
+              class="btnSpacer"
+              mat-raised-button
+              color="primary"
+              routerLink="/contact"
+            >
+              Contact me
+            </button>
+          </p>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <img
+          class="circleHead"
+          src="../../../assets/jcupdated.jpg"
+          alt="Jesse Rules"
+        />
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+
+  <section class="imagePanel">
+    <mat-grid-list cols="4" rowHeight="4:4" gallerize>
+      <mat-grid-tile *ngFor="let img of imgData"
+        ><img mat-card-image [src]="img.srcUrl"
+      /></mat-grid-tile>
+    </mat-grid-list>
+  </section>
+
+  <mat-divider></mat-divider>
+
+  <section id="testimonials" class="m-hero-item mpadding">
+    <h2 class="c-heading-2">Testimonials</h2>
+
+    <mat-carousel
+      #matCarousel
+      [timings]="timings"
+      [autoplay]="autoplay"
+      [interval]="interval"
+      [loop]="loop"
+      [hideArrows]="hideArrows"
+      [hideIndicators]="hideIndicators"
+      [color]="color"
+      [maxWidth]="maxWidth"
+      [proportion]="proportion"
+      [useKeyboard]="useKeyboard"
+      [useMouseWheel]="useMouseWheel"
+      [orientation]="orientation"
+      [slides]="slides"
+      [maintainAspectRatio]="maintainAspectRatio"
+      [slideHeight]="slideHeight"
+      (change)="onChange($event)"
+    >
+      <mat-carousel-slide
+        #matCarouselSlide
+        *ngFor="let slide of slidesList; let i = index"
+        image="{{ slide.img }}"
+        [overlayColor]="overlayColor"
+        [hideOverlay]="hideOverlay"
+      >
+        <ng-container *ngIf="showContent">
+          <div
+            style="
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-direction: column;
+              align-items: center;
+              justify-content: center;
+            "
+          >
+            <h1>{{ i }}</h1>
+            <p>disabled: {{ matCarouselSlide.disabled }}</p>
+            <button
+              mat-flat-button
+              (click)="matCarouselSlide.disabled = !matCarouselSlide.disabled"
+            >
+              Click me!
+            </button>
+          </div>
+        </ng-container>
+      </mat-carousel-slide>
+    </mat-carousel>
+  </section>
+
+  <section id="myskills" class="m-hero-item mpadding">
+    <h2 class="c-heading-2">Coding Experience</h2>
+    <div clss="chart-container">
+      <canvas id="canvas"></canvas>
+    </div>
+  </section>
+
+  <section id="myskills" class="m-hero-item mpadding">
+    <h2 class="c-heading-2">My Skills</h2>
+
+    <mat-card>
+      <div class="skillView">
+        <span class="skillTitle">Code Architecture </span>
+        <mat-progress-bar mode="determinate" value="80"></mat-progress-bar>
+      </div>
+      <div class="skillView">
+        <span class="skillTitle">Agile development</span>
+        <mat-progress-bar mode="determinate" value="90"></mat-progress-bar>
+      </div>
+      <div class="skillView">
+        <span class="skillTitle">User experience design (UX)</span>
+        <mat-progress-bar mode="determinate" value="70"></mat-progress-bar>
+      </div>
+      <div class="skillView">
+        <span class="skillTitle">Data Science</span>
+        <mat-progress-bar mode="determinate" value="90"></mat-progress-bar>
+      </div>
+      <div class="skillView">
+        <span class="skillTitle">{{mentoringTxt}}</span>
+        <mat-progress-bar mode="determinate" value="60"></mat-progress-bar>
+      </div>
+      <div class="skillView">
+        <span class="skillTitle">{{sixTxt}}</span>
+        <mat-progress-bar mode="determinate" value="92"></mat-progress-bar>
+      </div>
+    </mat-card>
+  </section>
+</div>

@@ -1,0 +1,114 @@
+.resume {
+  height: 100%;
+  min-height: 600px;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.mainResume {
+  margin: 15px;
+  margin-left: 5%;
+  margin-right: 5%;
+  font-weight: normal;
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+.titleSection {
+}
+
+.jobLineItem {
+  padding-left: 5px;
+}
+
+.titleSection h1 {
+  font-weight: 100;
+  font-size: 2rem;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+  color: black;
+  width: fit-content;
+}
+
+.titleSection h3 {
+  font-weight: 100;
+  font-size: 1.5rem;
+  line-height: normal;
+  margin-bottom: 2rem;
+  color: #b2b2b2;
+  width: fit-content;
+}
+
+.bioSection {
+  padding: 5px;
+}
+
+.experienceSection {
+  padding: 5px;
+}
+
+.experienceSection h2 {
+  font-size: 1rem;
+  font-weight: normal;
+  line-height: normal;
+  margin-bottom: 0.5rem;
+  color: #b2b2b2;
+  width: fit-content;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.experenceList {
+  padding-top: 5px;
+}
+
+.jobSection {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1.5rem;
+}
+
+.jobTitle {
+  font-size: 1.1rem;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 0.4rem;
+  color: black;
+  width: fit-content;
+}
+
+.jobTime {
+  font-size: 0.9rem;
+  font-weight: 300;
+  line-height: normal;
+  margin-bottom: 0.4rem;
+  color: #b2b2b2;
+  width: fit-content;
+}
+
+.jobInfo {
+  font-weight: 300;
+  line-height: 1.5;
+  color: #131313;
+  width: fit-content;
+}
+
+.rightPanel {
+
+  padding-top: 20px;
+  margin-right: 5%;
+}
+
+.imgContainer {
+
+}
+
+.avatarImg {
+  width: 100%;
+  border-radius: 50%;
+}
+
+.contactSection{
+text-align: center;
+}

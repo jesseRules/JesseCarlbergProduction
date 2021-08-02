@@ -1,0 +1,20 @@
+.registerCard {
+  padding: 5%;
+  max-width: 600px;
+}
+
+mat-form-field .mat-form-field {
+  &-underline {
+    position: relative;
+    bottom: auto;
+  }
+  &-subscript-wrapper {
+    position: static;
+  }
+}
+
+
+.fullLengthField {
+  width: 100%;
+  max-width: 400px;
+}

@@ -1,0 +1,4 @@
+{
+  "appService.defaultWebAppToDeploy": "/subscriptions/2c6c4d4a-3e60-4a6b-82b4-e0c23753c6c6/resourceGroups/Personal/providers/Microsoft.Web/sites/JesseRules",
+  "appService.deploySubpath": "dist\\jesseRules"
+}

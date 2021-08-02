@@ -1,0 +1,212 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav
+    #drawer
+    class="sidenav navPanelBG"
+    fixedInViewport
+    [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="'over'"
+    [opened]="opened"
+  >
+    <mat-toolbar color="primary"> Jesse Carlberg </mat-toolbar>
+    <mat-nav-list>
+      <a
+        mat-list-item
+        routerLink="/home"
+        routerLinkActive="active-link"
+        (click)="drawer.toggle()"
+      >
+        <mat-icon class="icon">home</mat-icon>
+        <span class="label">Home</span>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/photography"
+        routerLinkActive="active-link"
+        (click)="drawer.toggle()"
+      >
+        <mat-icon class="icon">monochrome_photos</mat-icon>
+        <span class="label">Photography</span>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/portfolio"
+        routerLinkActive="active-link"
+        (click)="drawer.toggle()"
+      >
+        <mat-icon class="icon">dashboard</mat-icon>
+        <span class="label">Portfolio</span>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/blog"
+        routerLinkActive="active-link"
+        (click)="drawer.toggle()"
+      >
+        <mat-icon class="icon">dynamic_feed</mat-icon>
+        <span class="label">Blog</span>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/coding"
+        routerLinkActive="active-link"
+        (click)="drawer.toggle()"
+      >
+        <mat-icon class="icon">code_off</mat-icon>
+        <span class="label">Coding</span>
+      </a>
+      <a
+        mat-list-item
+        routerLink="/consulting"
+        routerLinkActive="active-link"
+        (click)="drawer.toggle()"
+      >
+        <mat-icon class="icon">how_to_reg</mat-icon>
+        <span class="label">Consulting</span>
+      </a>
+      <a
+        mat-list-item
+        type="button"
+        routerLink="/about"
+        routerLinkActive="active-link"
+        (click)="drawer.toggle()"
+      >
+        <mat-icon class="icon">info</mat-icon>
+        <span class="label">About me</span>
+      </a>
+      <a
+        mat-list-item
+        type="button"
+        routerLink="/contact"
+        routerLinkActive="active-link"
+        (click)="drawer.toggle()"
+      >
+        <mat-icon class="icon">contact_support</mat-icon>
+        <span class="label">Contact me</span>
+      </a>
+    </mat-nav-list>
+    <div class="logoutpacer">
+      <mat-nav-list *ngIf="!showLogout">
+        <a
+          mat-list-item
+          type="button"
+          routerLink="/login"
+          routerLinkActive="active-link"
+          aria-hidden="false"
+          aria-label="Login"
+          (click)="drawer.toggle()"
+        >
+          <mat-icon class="nav-mat-icon">login</mat-icon>
+          <span class="label">Login</span>
+        </a>
+        <a
+          mat-list-item
+          type="button"
+          routerLink="/forgot-password"
+          routerLinkActive="active-link"
+          aria-hidden="false"
+          aria-label="Forgot Password"
+          (click)="drawer.toggle()"
+        >
+          <mat-icon class="nav-mat-icon">privacy_tip</mat-icon>
+          <span class="label"> Forgot Password</span>
+        </a>
+
+        <a
+          mat-list-item
+          type="button"
+          routerLink="/register"
+          routerLinkActive="active-link"
+          aria-hidden="false"
+          aria-label="Register"
+          (click)="drawer.toggle()"
+        >
+          <mat-icon class="nav-mat-icon">app_registration</mat-icon>
+          <span class="label">Register</span>
+        </a>
+      </mat-nav-list>
+      <div class="logoutpacer">
+        <mat-nav-list *ngIf="showLogout">
+          <a mat-list-item routerLink="/logout"
+            ><mat-icon
+              class="nav-mat-icon"
+              (click)="drawer.toggle()"
+              aria-hidden="false"
+              aria-label="Logout"
+              >logout</mat-icon
+            >
+            Logout
+          </a>
+          <a mat-list-item routerLink="/reset-password"
+            ><mat-icon
+              class="nav-mat-icon"
+              (click)="drawer.toggle()"
+              aria-hidden="false"
+              aria-label="Reset Password"
+              >pin</mat-icon
+            >
+            Password Reset
+          </a>
+        </mat-nav-list>
+      </div>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <div class="page-wrap">
+      <header role="banner">
+        <mat-toolbar color="primary">
+          <button
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="drawer.toggle()"
+          >
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          </button>
+          <span>
+            <a class="sideA" routerLink="/home"> Jesse Carlberg </a>
+          </span>
+          <span class="search-spacer"></span>
+          <div fxFlex fxLayout fxLayoutAlign="flex-end" fxHide.xs>
+            <ul fxLayout fxLayoutGap="20px" class="navigation-items">
+              <li>
+                <a
+                  class="sideA"
+                  routerLink="/home"
+                  routerLinkActive="side-active-link"
+                >
+                  <mat-icon class="icon">home</mat-icon>
+                  <span class="label">Home</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  class="sideA"
+                  routerLink="/portfolio"
+                  routerLinkActive="side-active-link"
+                >
+                  <mat-icon class="icon">dashboard</mat-icon>
+                  <span class="label">Portfolio</span>
+                </a>
+              </li>
+              <li>
+                <a
+                  class="sideA"
+                  routerLink="/about"
+                  routerLinkActive="side-active-link"
+                >
+                  <mat-icon class="icon">info</mat-icon>
+                  <span class="label">About me</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </mat-toolbar>
+      </header>
+      <main class="content mainAView">
+        <router-outlet></router-outlet>
+      </main>
+      <footer><app-navfooter></app-navfooter></footer>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

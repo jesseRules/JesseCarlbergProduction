@@ -1,0 +1,433 @@
+<div class="mainView">
+  <div class="headerCard">
+    <div class="fixedHeader">
+      <div class="intro-text">
+        <div class="intro-lead-in">Projects and Things to Click On</div>
+        <div class="intro-heading">Will Code for Food</div>
+        <button mat-raised-button color="accent" routerLink="/contact">
+          Contact me
+        </button>
+      </div>
+    </div>
+    <img
+      mat-card-image
+      class="heroImg"
+      src="../../../assets/photos/JES08513.jpg"
+      alt="Union Nebraska"
+    />
+  </div>
+
+  <nav #navmenu class="navmenu" [ngClass]="showNav ? 'fixedNavBar' : ''">
+    <button mat-button color="primary" (click)="scroll('awards')">
+      Awards
+    </button>
+    <button mat-button color="primary" (click)="scroll('projects')">
+      Projects
+    </button>
+    <button mat-button color="primary" (click)="scroll('maps')">Maps</button>
+    <button mat-button color="primary" (click)="scroll('bigdata')">Data</button>
+  </nav>
+
+  <section #awardsSection class="mpadding">
+    <div class="m-hero-item">
+      <h2 class="c-heading-2">Competitions and Awards</h2>
+      <h3 class="section-subheading text-muted">
+        Some of my projects that brought home a trophy.
+      </h3>
+    </div>
+    <mat-grid-list
+      #awardGrid
+      [cols]="cols"
+      [rowHeight]="rowheight"
+      gutterSize="20px"
+    >
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Adobe Kickbox</mat-card-title>
+            <mat-card-subtitle>Innovation Competiton</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-image src="../../../assets/redbox.jpg" alt="RedBox" />
+          <mat-card-content>
+            <p>
+              This was a pretty dope experience because it was separate from the
+              company I was with. It's kind of a paint by numbers development
+              life cycle experience in just one workshop. The Kickbox was
+              rebranded Red Box Crusher but the materials and intent were all
+              the same. Kickbox aims for two goals: creating new businesses
+              while playfully educating your employees and making them fit for
+              the digital age.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- <button mat-button routerLink="/coding">Read about this</button> -->
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Enterprise Fitness App</mat-card-title>
+            <mat-card-subtitle>Health & Wellness</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/tdafit_watch.jpg"
+            alt="Fitbit"
+            routerLink="/coding"
+          />
+          <mat-card-content>
+            <p>
+              After the Red Box workshop and doing all of the steps for that you
+              could take the next challenge which was to take an idea and make
+              it a reality. The firm I was with would give you $1K in cash to
+              use toward the build. Knowing their target audience, they add the
+              stipulation that couldn't use it on food or booze, but everything
+              else was game. So, I spent my money on a bunch of Fitbit watches
+              and scales. Using the Fitbit API and corporate data I created a
+              firm wide wellness app.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- <button mat-button routerLink="/coding">Let's go</button> -->
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Hackapalooza</mat-card-title>
+            <mat-card-subtitle>Innovation Competiton</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/redboxcrusher.jpg"
+            alt="Red Box Crusher"
+          />
+          <mat-card-content>
+            <p>
+              This was a recurring challenge I was a part of. The great thing
+              about this was my company would give you a week off your main gig
+              to do this. So, you could just burn through your side of the desk
+              projects in one week. Getting time to just make things and make
+              your company better was amazing. I probably did 4 projects through
+              this that all had significant impacts on the business.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- <button mat-button routerLink="/coding">Let's go</button> -->
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Improvaganza</mat-card-title>
+            <mat-card-subtitle>Application competition</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/improvaganza trophy.jpg"
+            alt="Improvaganza"
+          />
+          <mat-card-content>
+            <p>
+              My favorite competition, honestly. You could take some piece of
+              technology that has been sitting around for years and give it some
+              love. On this one I took all our brick & mortar locations and
+              built an information website containing all of the details on
+              them. This had previously been maintained by 3 or 4 Excel
+              workbooks at various states of being out of date.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- <button mat-button routerLink="/coding">Let's go</button> -->
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Inventor Gala</mat-card-title>
+            <mat-card-subtitle>Patent Holder</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/inventorgala.jpg"
+            alt="Inventor Gala"
+          />
+          <mat-card-content>
+            <p>
+              I'm just bragging at this point. On one of the first ever
+              Hackathons I was a part of, myself and a team of stockbrokers
+              built a training website on how to trade options. The idea behind
+              the trading training displays has been working its way through the
+              US Patent process. The company I was with put together a cool
+              Inventor Gala at the Fort Museum in Ann Arbor for patent holders.
+              It was a lot of fun and my first Gala, so it bears mention.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <!-- <button mat-button routerLink="/coding">Let's go</button> -->
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+
+  <section #projects class="mpadding">
+    <div class="m-hero-item">
+      <h2 class="c-heading-2">Various Projects</h2>
+      <h3 class="section-subheading text-muted">Just some fun projects.</h3>
+    </div>
+    <mat-grid-list
+      #projGrid
+      [cols]="cols"
+      [rowHeight]="rowheight"
+      gutterSize="20px"
+    >
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Markdown Editor</mat-card-title>
+            <mat-card-subtitle>Blogging in style</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/markdownblog.png"
+            alt="markdown"
+          />
+          <mat-card-content>
+            <p>
+              A real-time Markdown to HTML generator using the Monaco editor
+              because I'm a MSFT fan boy and I can't help myself. I built this
+              to generate the blog posts you see throughout this website.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="primary" routerLink="/addpost">
+              Check it out!
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Codebox</mat-card-title>
+            <mat-card-subtitle
+              >Internal enterprise live coding tool</mat-card-subtitle
+            >
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/codebox_app.png"
+            alt="Codebox"
+          />
+          <mat-card-content>
+            <p>
+              Build, share, and learn JavaScript, CSS, and HTML with an online
+              code editor.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="primary" routerLink="/codebox">
+              Check it out!
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+
+      <!-- <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Enterprise Dev/Ops homepage</mat-card-title>
+            <mat-card-subtitle>Intraweb</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/internal_website.png"
+            alt="Internal Site"
+          />
+          <mat-card-content>
+            <p>
+              This was one of many internal corporate websites I made. I focused
+              on an easy user-friendly UI. I tried to keep info easy to find but
+              users were able to drill down into it for more info on the things
+              they cared about.
+            </p>
+          </mat-card-content>
+          <mat-card-actions> </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile> -->
+
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>JSON Beautifier</mat-card-title>
+            <mat-card-subtitle>Dev Tool</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/blog/pics/jsonBeautifier.png"
+            alt="JSON Beautifier"
+          />
+          <mat-card-content>
+            <p>
+              A quick and easy JSON beautifier app. It is completely client side
+              and sends nothing external. This was important to me as I didn't
+              want any security issues when pasting data in on websites, lol.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="primary" routerLink="/json-beautifier">
+              Check it out!
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+
+  <section #maps class="mpadding">
+    <div class="m-hero-item">
+      <h2 class="c-heading-2">Maps and Charts</h2>
+      <h3 class="section-subheading text-muted">
+        The map nerd in me made these
+      </h3>
+    </div>
+    <mat-grid-list
+      #mapsGrid
+      [cols]="cols"
+      [rowHeight]="rowheight"
+      gutterSize="20px"
+    >
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Maps</mat-card-title>
+            <mat-card-subtitle>Using Google maps</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/blog/pics/googlemapexample.png"
+            alt="Maps Example"
+          />
+          <mat-card-content>
+            <p>
+              Integrate maps and data-layers into your website. Make brick and
+              mortar stores visible and findable. Utilizing Google maps, I have
+              created enterprise applications used for disaster planning and
+              preparation. Also, manage site locations with egress mapping and
+              tracking.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="primary" routerLink="/map-sample">
+              Check it out!
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>Chart Examples</mat-card-title>
+            <mat-card-subtitle>Chart.js demo</mat-card-subtitle>
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/chartExample.png"
+            alt="Chart Example app"
+          />
+          <mat-card-content>
+            <p>
+              A real simple demo of Chart.js. A combo bar line chart, with
+              random data generator written in typescript and Angular.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="primary" routerLink="/chart-sample">
+              Check it out!
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+
+  <section #bigdata class="mpadding">
+    <div class="m-hero-item">
+      <h2 class="c-heading-2">Data, Apps, and ETLs</h2>
+      <h3 class="section-subheading text-muted">
+        Getting and Using Big Data to Make Apps
+      </h3>
+    </div>
+    <mat-grid-list
+      #dataGrid
+      [cols]="cols"
+      [rowHeight]="rowheight"
+      gutterSize="20px"
+    >
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>COVID-19 Data</mat-card-title>
+            <mat-card-subtitle
+              >Using John Hopkins University data</mat-card-subtitle
+            >
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/jhdataexample.png"
+            alt="Covid Data Example"
+          />
+          <mat-card-content>
+            <p>
+              There is just so much data out there during this pandemic, it can
+              be overwhelming. I wanted to provide an easy example of how to get
+              data from a university system and transform it for a specific use.
+              In this example, I am taking COVID-19 confirmed cases data and
+              mapping it over to a Chart.js data structure.
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-button color="primary" routerLink="/jh-sample">
+              Check it out!
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+      <mat-grid-tile>
+        <mat-card class="service-card">
+          <mat-card-header>
+            <mat-card-title>iEXCEL Data Capture</mat-card-title>
+            <mat-card-subtitle
+              >UNMC's iEXCEL Data Capture App</mat-card-subtitle
+            >
+          </mat-card-header>
+          <img
+            mat-card-image
+            src="../../../assets/iexcelapp.jpg"
+            alt="iEXCEL App"
+          />
+          <mat-card-content>
+            <p>
+              Combining multiple data sources, using eight different ETL's to
+              generate one data source sits this Angular 12 app. Used for daily
+              decision making and inventory tracking, this application has
+              become a spring board of further development and content creation.
+            </p>
+          </mat-card-content>
+          <mat-card-actions> </mat-card-actions>
+        </mat-card>
+      </mat-grid-tile>
+    </mat-grid-list>
+  </section>
+</div>

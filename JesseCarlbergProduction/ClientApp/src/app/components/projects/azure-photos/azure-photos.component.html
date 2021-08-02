@@ -1,0 +1,47 @@
+<div class="azMainPage">
+  <div class="azHeader">
+    <h1>Azure Blob Storage Example</h1>
+    <h3>I am using this for my photos.</h3>
+    <p>Check the code out <a href="https://github.com/jesseRules/jessesPersonalSite/blob/main/RestAPICore/Services/AzPhotoService.cs" target="_blank">here.</a></p>
+  </div>
+  <div class="azPhotoForm">
+    <h2>Example Image Reader/Uploader</h2>
+    <p>
+      This doesn't actually save your images to my DB. Don't take this
+      personally, I don't want your random internet person photos upladed to my
+      database... For so many reasons.
+    </p>
+    <ngx-dropzone (change)="onSelect($event)">
+      <ngx-dropzone-label>Drop it, baby!</ngx-dropzone-label>
+      <ngx-dropzone-image-preview
+        ngProjectAs="ngx-dropzone-preview"
+        *ngFor="let f of files"
+        [file]="f"
+      >
+        <ngx-dropzone-label>{{ f.name }} ({{ f.type }})</ngx-dropzone-label>
+      </ngx-dropzone-image-preview>
+    </ngx-dropzone>
+
+    <!-- <button mat-raised-button color="primary" (click)="saveForm()">Save</button> -->
+    <div class="codeDisp">
+      <h2>Azure Blob List Response</h2>
+      <p>Below is what the Azure Blob Storage results look like.</p>
+      <pre class="box">
+
+        {{ imgListJson | json }}
+
+        </pre
+      >
+    </div>
+
+    <div class="imgSection">
+      <h2>Image Results (Blob Items)</h2>
+      <h3>I took the results above and displayed them, pretty like.</h3>
+      <mat-grid-list cols="2" rowHeight="2:1" gallerize>
+        <mat-grid-tile *ngFor="let img of imgList"
+          ><img mat-card-image [src]="img"
+        /></mat-grid-tile>
+      </mat-grid-list>
+    </div>
+  </div>
+</div>
